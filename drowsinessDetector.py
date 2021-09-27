@@ -2,6 +2,7 @@ import cv2
 import dlib
 from scipy.spatial import distance
 
+#calculating eye aspect ratio 
 def calculate_EAR(eye):
 	A = distance.euclidean(eye[1], eye[5])
 	B = distance.euclidean(eye[2], eye[4])
@@ -13,6 +14,7 @@ cap = cv2.VideoCapture(0)
 hog_face_detector = dlib.get_frontal_face_detector()
 dlib_facelandmark = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
+#run loop over video frame to access dynamic changes
 while True:
     _, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -24,6 +26,7 @@ while True:
         leftEye = []
         rightEye = []
 
+#for right eye
         for n in range(36,42):
         	x = face_landmarks.part(n).x
         	y = face_landmarks.part(n).y
@@ -35,6 +38,7 @@ while True:
         	y2 = face_landmarks.part(next_point).y
         	cv2.line(frame,(x,y),(x2,y2),(0,255,0),1)
 
+#for left eye
         for n in range(42,48):
         	x = face_landmarks.part(n).x
         	y = face_landmarks.part(n).y
@@ -51,6 +55,8 @@ while True:
 
         EAR = (left_ear+right_ear)/2
         EAR = round(EAR,2)
+
+#Research shows the Eye closing aspect ratio should be considered closed when AR is below 0.25
         if EAR<0.26:
         	cv2.putText(frame,"DROWSY",(20,100),
         		cv2.FONT_HERSHEY_SIMPLEX,3,(0,0,255),4)
@@ -59,7 +65,8 @@ while True:
         	print("Drowsy")
         print(EAR)
 
-    cv2.imshow("Are you Sleepy", frame)
+#Flashing message!
+    cv2.imshow("Wake UP!", frame)
 
     key = cv2.waitKey(1)
     if key == 27:
