@@ -11,9 +11,11 @@ ________________________________________________________________________________
 • The main objective of Smart Camera System is to define video
 tracking features and varied systems needed to perform object
 tracking.
+
 • Several Image Processing Algorithms need to be developed and used
 for video tracking purposes. OpenCV is one such module in Python
 that helps with image processing techniques in programming.
+
 • Once video tracking occurs, we can implement the AI part of the
 project where we will use several meand to detect objects, faces and states
 ___________________________________________________________________________________________________________________________________________________________________________________
