@@ -16,7 +16,7 @@ tracking.
 for video tracking purposes. OpenCV is one such module in Python
 that helps with image processing techniques in programming.
 
-• Once video tracking occurs, we can implement the AI part of the
+• Once video tracking occurs, we can implement the part of the
 project where we will use several meand to detect objects, faces and states
 ___________________________________________________________________________________________________________________________________________________________________________________
 
